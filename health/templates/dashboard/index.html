@@ -23,7 +23,7 @@
         {% for camera in cameras %}
           <div class="camera">
             {% if camera.labled_image %}
-              <img src="/media/LabelImages/{{ camera.labled_image }}" />
+              <a href="/media/LabelImages/{{ camera.labled_image }}" target="blank"><img src="/media/LabelImages/{{ camera.labled_image }}" /></a>
             {% else %}
               <img src="{% static 'images/empty.jpg' %}"/>
             {% endif %}
