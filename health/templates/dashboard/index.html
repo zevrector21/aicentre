@@ -23,14 +23,13 @@
         {% for camera in cameras %}
           <div class="camera">
             {% if camera.labled_image %}
-              <img src="{{ camera.labled_image}}" />
+              <img src="/media/LabelImages/{{ camera.labled_image }}" />
             {% else %}
-              <img src="{% static 'images/Cottage 4 Room 12 Date-2020-03-02-Time-11-50-31.png' %}"/>
+              <img src="{% static 'images/empty.jpg' %}"/>
             {% endif %}
             <div class="cam-info">
               <h3><a href="/admin/health/camera/{{ camera.id }}/change">{{ camera.cid }}</a></h3>
-              <p>{{ camera.room }}</p>
-              <p>{{ camera.updated_at }}</p>
+              <p>{{ camera.room }}</p>              
             </div>
           </div>
         {% endfor %}

@@ -11,7 +11,7 @@ import pdb
 admin.site.site_header = "AI Management Centre"
 
 class CameraAdmin(admin.ModelAdmin):
-    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'created_at', 'updated_at']
+    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'labled_image']
     list_filter = ['cid', 'title', 'room']
     search_fields = ['title', 'room']
 
