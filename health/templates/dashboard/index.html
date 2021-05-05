@@ -19,7 +19,7 @@
       </div>
     </header>
     <div class="container">
-      <div class="cameras">
+      <div id="cameras" class="cameras">
         {% for camera in cameras %}
           <div class="camera">
             {% if camera.labled_image %}
@@ -38,5 +38,15 @@
     <footer class="footer">
       <p>@ Evolution Business Technologies, LLC.</p>
   </footer> 
-  </body>  
+  </body>
+  <script type="text/javascript">
+    setInterval(function() {
+      $.ajax({
+        type: "GET",
+        url: "/fetch_images",
+      }).done(function(res) {
+          document.getElementByID('cameras').innerHTML = res;
+      });
+    }, 6000);
+  </script>
 </html>

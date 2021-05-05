@@ -50,6 +50,12 @@ def main(request):
         'cameras' : cameras
     })
 
+def fetch_images(request):
+    cameras = Camera.objects.all()
+    return render(request, 'dashboard/content.html', 
+        {'cameras': cameras}
+    )
+
 # view to log_out 
 def logout_request(request):
     logout(request)

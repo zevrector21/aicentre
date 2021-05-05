@@ -1,0 +1,15 @@
+{% load static %}
+{% load widget_tweaks %}
+{% for camera in cameras %}
+  <div class="camera">
+    {% if camera.labled_image %}
+      <a href="/media/LabelImages/{{ camera.labled_image }}" target="blank"><img src="/media/LabelImages/{{ camera.labled_image }}" /></a>
+    {% else %}
+      <img src="{% static 'images/empty.jpg' %}"/>
+    {% endif %}
+    <div class="cam-info">
+      <h3><a href="/admin/health/camera/{{ camera.id }}/change">{{ camera.cid }}</a></h3>
+      <p>{{ camera.room }}</p>
+    </div>
+  </div>
+{% endfor %}
