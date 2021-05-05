@@ -1,0 +1,10 @@
+twilio:
+  account_sid: ACe95b6bf85661ba6dde3aeacbe698c0c1
+  auth_token: fea81f5efc959bc0152554296c257393  
+  number: ['+13124986407','+17088782980','+17088344244','+17089418819']
+
+key:
+  secret_key: 0oe3)p84z9k7$*1wwo#nz=t*)7e(fik$0ptm8mzs39$wn(ga78
+  
+Message:
+  Text_Body: 'IDP Centre:'

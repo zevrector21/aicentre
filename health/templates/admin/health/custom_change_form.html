@@ -1,0 +1,10 @@
+{% extends "admin/change_list.html" %}
+{% block object-tools %}
+<form method="POST">
+    {% csrf_token %}
+    <a href="/daily" ><button class="btn btn-md" type="button" ">Daily Report</button></a> 
+    <a href="/7day"><button class="btn  btn-md" type="button" ">7 Day Report</button></a>
+    <a href="/all"><button class="btn  btn-md" type="button" ">All Report</button></a> 
+</form>
+{{ block.super}}
+{% endblock object-tools %}

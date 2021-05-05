@@ -1,0 +1,168 @@
+body {
+  font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+
+.page-header {
+  padding: 10px 40px;
+  background: #417690;
+  color: #f5dd5d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 400;    
+  margin-bottom: 0;
+}
+
+.page-header a {
+  color: #fff;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: auto 0;  
+}
+
+.table .thead-dark th{
+  background-color: #79aec8;
+  border-color: #79aec8;
+  padding: 8px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+}   
+
+.page-footer {
+  background-color: #79aec8;
+  border-color: #79aec8;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table td {
+  padding: 8px !important;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.table td a {
+  color: #447e9b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.table td a:hover {
+ color: #036;
+}
+
+.c-btn {
+  margin: auto 0;
+  font-size: 0.7rem !important;
+  background-color: #417690 !important;
+  color: #ffffff;
+  border-color: #417690;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.c-btn:hover {
+  color: #ffffff;
+  background-color: #205067 !important;
+}
+
+.content {
+  min-height: 65vh;
+  padding: 10px 40px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 40px 0;
+}
+
+.actions form {
+  margin-bottom: 0;
+}
+
+.add-btn {
+  display: block;
+  float: left;
+  padding: 3.5px 12px;
+  background: #999;
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  border-radius: 15px;
+  text-decoration: none;
+  line-height: 1.6;
+  background-image: url('/static/admin/img/tooltag-add.svg');
+  background-repeat: no-repeat;
+  background-position: right 7px center;
+  padding-right: 26px;
+}
+
+.add-btn:hover {
+  background-color: #417690;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.filter-btn {
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+  cursor: pointer;
+  height: 24px;
+  line-height: 1;
+  padding: 4px 8px;
+  margin-left: 4px;
+  color: #333;
+}
+
+.selections {
+  display: flex;
+}
+
+.selections label {
+  margin: auto 0.5rem;
+  font-size: 14px;
+  color: #999;
+}
+
+.selections select,
+.selections .date-picker {
+  vertical-align: top;
+  height: 24px;
+  background: none;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 0 0 4px;    
+}
+
+.blank-content {
+  display: flex;
+  min-height: 60vh;
+}
+
+.blank-content p {
+  margin: auto;
+  font-size: 13px;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+}

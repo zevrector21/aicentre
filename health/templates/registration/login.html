@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<div>
+{% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+		<div class="alert alert-danger">
+			<strong>Please Try Again!</strong> {{ error }}
+		</div>
+    {% endfor %}    
+{% endif %}
+</div>
+<span class="login100-form-title p-b-41">
+	EBT IDP Login
+</span>
+<form class="login100-form validate-form p-b-33 p-t-5" method="POST">
+	{% csrf_token %}
+	
+	<div class="wrap-input100 validate-input" data-validate = "Enter username">
+		{{form.username|attr:"class:input100"|attr:"placeholder:User Name" }} 
+	</div>
+	<div class="wrap-input100 validate-input" data-validate="Enter password">
+		{{form.password|attr:"class:input100"|attr:"placeholder:Password" }} 
+	</div>
+	<div class="container-login100-form-btn m-t-32">
+		<button type="submit" class="login100-form-btn">
+			Login
+		</button>
+	</div>
+</form>
+
+{% endblock %}

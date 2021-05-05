@@ -1,0 +1,38 @@
+
+   <form method="POST">
+   {% csrf_token %}
+   {{form.as_p}}
+
+<button class="btn" style="background-color: seagreen" type="submit">login</button>
+
+
+
+<!-- {% if messages %} -->
+
+{% for message in messages %}
+
+
+
+    <!-- <script>M.toast({html: "{{message}}", classes: 'red rounded', displayLength:2000});</script> -->
+    
+
+    <div class="alert alert-success">
+      <a class="close" href="#" data-dismiss="alert">×</a>
+
+      {{ message }}
+
+  </div>
+
+  
+
+
+
+ {% endfor %}
+ 
+ <!-- {% endif %} -->
+ 
+
+</form>
+
+
+
