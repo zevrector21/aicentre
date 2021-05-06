@@ -50,6 +50,16 @@ def main(request):
         'cameras' : cameras
     })
 
+@login_required(login_url='/login/')
+@csrf_exempt
+def detected_images(request):
+    cameras = Camera.objects.all()
+    return render(request, 'dashboard/detected_images.html', {
+        'cameras' : cameras
+    })
+
+@login_required(login_url='/login/')
+@csrf_exempt
 def fetch_images(request):
     cameras = Camera.objects.all()
     return render(request, 'dashboard/content.html', 

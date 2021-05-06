@@ -12,12 +12,19 @@
   </head>
   <body>
     <header class="header">
-      <h2 id="title" class="text-center">AI Camera Dashboard</h2>
+      <h1 id="title" class="text-center"><a href="/">AI Management Dashboard</a></h1>
       <div class="d-flex">
-        <a href="/admin/health/camera">Settings</a>
-        <a href="/logout">Log Out</a>
+        <a href="/admin/auth/user/">Users</a> / 
+        <a href="/admin/health/camera">Cameras</a> / 
+        <a href="/admin/health/detection/">Detections</a> / 
+        <a href="/admin/health/phonenumber">Phone Numbers</a> / 
+        <a href="/admin/health/archivedimage">Archived Images</a> / 
+        <a href="/logout" style="margin-right: 0">Log Out</a>
       </div>
     </header>
+    <div class="breadcrumbs">
+    Labled Images
+    </div>
     <div class="container">
       <div id="cameras" class="cameras">
         {% for camera in cameras %}
@@ -35,9 +42,9 @@
         {% endfor %}
       </div>
     </div>
-    <footer class="footer">
+    <!-- <footer class="footer">
       <p>@ Evolution Business Technologies, LLC.</p>
-  </footer> 
+    </footer>  -->
   </body>
   <script type="text/javascript">
     setInterval(function() {
@@ -47,6 +54,6 @@
       }).done(function(res) {
           document.getElementById('cameras').innerHTML = res;
       });
-    }, 6000);
+    }, 3000);
   </script>
 </html>

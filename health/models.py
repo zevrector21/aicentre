@@ -19,6 +19,7 @@ class Camera(models.Model):
 class Detection(models.Model):
     code = models.CharField(max_length=20, blank=False, unique=True)
     description = models.CharField(max_length=255, blank=False)
+    status = models.BooleanField(blank=True, default=False)
 
     def __str__(self):
         return self.description
@@ -33,3 +34,11 @@ class ArchivedImage(models.Model):
     def __str__(self):
         return self.name
 
+class PhoneNumber(models.Model):
+    number = models.CharField(max_length=100, blank=False, unique=True)
+    name = models.CharField(max_length=100, blank=False)
+    description = models.CharField(max_length=100, blank=True)
+    schedule = models.CharField(max_length=100, blank=True)
+    
+    def __str__(self):
+        return self.number
