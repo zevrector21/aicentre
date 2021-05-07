@@ -7,6 +7,6 @@ from . import views
 app_name="health"
 
 urlpatterns = [
-    path('', views.main, name='main'),
+    path('', views.home, name='home'),
     path('fetch_images/',views.fetch_images, name='fetch_images'),
 ]

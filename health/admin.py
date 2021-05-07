@@ -15,7 +15,7 @@ class CameraAdmin(admin.ModelAdmin):
     def image(self, obj):
         return format_html(f'<a href="/media/LabelImages/{ obj.labled_image }" target="blank"><img src="/media/LabelImages/{ obj.labled_image }" width="100" /></a>')
 
-    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'image']
+    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'updated_at', 'image']
     search_fields = ['cid', 'title', 'room']
 
 admin.site.register(Camera, CameraAdmin)

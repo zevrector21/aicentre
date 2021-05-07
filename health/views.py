@@ -44,7 +44,7 @@ for idx in range(0, 20):
 # Create your views here.
 @login_required(login_url='/login/')
 @csrf_exempt
-def main(request):
+def home(request):
     cameras = Camera.objects.all()
     return render(request, 'dashboard/index.html', {
         'cameras' : cameras
@@ -79,7 +79,7 @@ def logout_request(request):
 
 def login_request(request):
     if request.user.is_authenticated:
-        return redirect('health:main')
+        return redirect('health:home')
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
         if form.is_valid():
@@ -90,7 +90,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect('health:main')
+                return redirect('health:home')
             else:
                 messages.error(request, "Invalid username or password.")
         else:
