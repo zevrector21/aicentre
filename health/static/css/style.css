@@ -334,3 +334,79 @@ form {
   border-radius: 2px;
   cursor: pointer;
 }
+
+form {
+  padding: 0;
+  margin: 20px 0;
+  background: #ffffff;
+}
+
+.selections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  padding: 5px;
+}
+
+fieldset label {
+  margin: auto 10px auto 0;
+  color: #999;
+  font-size: 13px;
+}
+
+fieldset input, fieldset select, fieldset  textarea {
+  max-width: 142px;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+fieldset button {
+  border: 1px solid #ccc;
+  font-size: 13px;
+  padding: 4px 8px;
+  margin: 0;
+  vertical-align: middle;
+  background: #fff;
+  box-shadow: 0 -15px 20px -10px rgb(0 0 0 / 15%) inset;
+  cursor: pointer;
+  color: #333;
+  border-radius: 4px;  
+}
+
+table {
+  width: 100%;
+}
+
+thead th {
+  padding: 8px 10px;
+  line-height: normal;
+  text-transform: uppercase;
+  background: #f6f6f6;
+  color: #666;
+  font-size: 11px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+tbody td {
+  padding: 8px 10px;
+  font-size: 14px;
+      line-height: 16px;
+    border-bottom: 1px solid #eee;
+        vertical-align: middle;
+        color: #333;
+}
+
+tbody td a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #447e9b;
+}

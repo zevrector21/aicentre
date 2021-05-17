@@ -9,4 +9,5 @@ app_name="health"
 urlpatterns = [
     path('', views.home, name='home'),
     path('fetch_images/',views.fetch_images, name='fetch_images'),
+    path('archived_images/',views.archived_images, name='archived_images'),
 ]

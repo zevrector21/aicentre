@@ -1,5 +1,7 @@
 {% load static %}
 {% load widget_tweaks %}
+{% load extra_tags %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +18,7 @@
       <div class="d-flex">
         <a href="/admin/auth/user" target="blank">Users</a> / 
         <a href="/admin/health/camera" target="blank">Cameras</a> / 
-        <a href="/admin/health/archivedimage" target="blank">Archived Images</a> / 
+        <a href="/archived_images" target="blank">Archived Images</a> / 
         <a href="/admin/health/detection" target="blank">Detections</a> / 
         <a href="/admin/health/phonenumber" target="blank">Phone Numbers</a> / 
         <a href="/logout" style="margin-right: 0">Log Out</a>
@@ -37,7 +39,8 @@
             <div class="cam-info">
               <h3><a href="/admin/health/camera/{{ camera.id }}/change" target="blank">{{ camera.cid }}</a></h3>
               <p>{{ camera.room }}</p>
-              <p>{{ camera.updated_at }}</p>
+              <p>{{ camera.updated_at | custom_format }}
+              </p>
             </div>
           </div>
         {% endfor %}

@@ -1,0 +1,118 @@
+{% load static %}
+{% load widget_tweaks %}
+{% load extra_tags %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="{% static 'js/secure.js' %}"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 id="title" class="text-center"><a href="/">AI Management Dashboard</a></h1>
+      <div class="d-flex">
+        <a href="/admin/auth/user" target="blank">Users</a> / 
+        <a href="/admin/health/camera" target="blank">Cameras</a> / 
+        <a href="/archived_images" target="blank">Archived Images</a> / 
+        <a href="/admin/health/detection" target="blank">Detections</a> / 
+        <a href="/admin/health/phonenumber" target="blank">Phone Numbers</a> / 
+        <a href="/logout" style="margin-right: 0">Log Out</a>
+      </div>
+    </header>
+    <div class="breadcrumbs">
+    Archived Images
+    </div>
+    <div class="container">
+      <div class="actions">
+        <form method="GET">
+          <div class="selections">
+            <fieldset>
+              <label for="camera">Camera:</label>
+              <select id="camera" name="camera">
+                <option value="-1">---------</option>
+                {% for cm in cameras %}
+                  {% if cm.id == camera %}
+                    <option value="{{cm.id}}" selected>{{cm.title}}</option>
+                  {% else %}
+                    <option value="{{cm.id}}">{{cm.title}}</option>
+                  {% endif %}
+                {% endfor %}                
+              </select>
+            </fieldset>
+            <fieldset>
+              <label for="status">Status:</label>
+              <select id="status" name="status">
+                <option value="-1">---------</option>
+                {% for detection in detections %}
+                  {% if detection.id == status %}
+                    <option value="{{detection.id}}" selected>{{detection.description}}</option>
+                  {% else %}
+                    <option value="{{detection.id}}">{{detection.description}}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </fieldset>
+            <fieldset>
+              <label for="start_date">From:</label>
+              <input type="date" class="date-picker" id="start_date" name="start_date" value="{{ start_date }}"/>
+            </fieldset>
+            <fieldset>
+              <label for="end_date">To:</label>
+              <input type="date" class="date-picker" id="end_date" name="end_date" value="{{ end_date }}"/>
+            </fieldset>
+            <fieldset>
+              <label for="filter">&nbsp;</label>
+              <button type="submit" class="filter-btn" name="filter" id="filter" value="Search">Search</button>
+            </fieldset>
+          </div>
+        </form>
+      </div>
+      <div class="content">
+        <table id="data" class="table table-striped">
+          <thead>
+            <tr class="thead-dark">
+              <th>Camera</th>
+              <th>Status</th>
+              <th>Latest Updated At</th>
+              <th>Image</th>
+            </tr>
+          </thead>
+          {% for x in form %}
+            <tr>
+              <td><a href="/admin/health/archivedimage/{{x.id}}/change">{{ x.camera }}</a></td>
+              <td>{{ x.status }}</td>
+              <td>{{ x.updated_at | custom_format }}</td>
+              <td><a href="/media/LabelImages/{ x.image }" target="blank"><img src="/media/LabelImages/{ x.image }" width="100" /></a></td>
+            </tr>
+          {% endfor %}
+        </table>
+        {% if form.has_other_pages %}
+          <ul class="pagination">
+            {% if form.has_previous %}
+              <li><a href="?{{query_set}}&page={{ form.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in form.paginator.page_range %}
+              {% if form.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?{{query_set}}&page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if form.has_next %}
+              <li><a href="?{{query_set}}&page={{ form.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

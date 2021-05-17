@@ -26,6 +26,7 @@ import yaml
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import pdb
 
 config = yaml.load(open(os.path.join(os.getcwd(),'config','con_file.yml')))
@@ -56,6 +57,63 @@ def detected_images(request):
     cameras = Camera.objects.all()
     return render(request, 'dashboard/detected_images.html', {
         'cameras' : cameras
+    })
+
+@login_required(login_url='/login/')
+@csrf_exempt
+def archived_images(request):
+    today = str(datetime.date.today())
+    start_date = request.GET.get('start_date', '1983-01-01')
+    end_date = request.GET.get('end_date', '2100-01-01')
+    camera = int(request.GET.get('camera', -1))
+    status = int(request.GET.get('status', -1))
+    cameras = Camera.objects.all()
+    detections = Detection.objects.all()
+
+    if camera == -1 and status == -1:
+        archived_images = ArchivedImage.objects.filter(
+            created_at__range=[start_date, end_date],
+        ).order_by('-created_at')
+    else:
+        archived_images = ArchivedImage.objects.filter(
+            created_at__range=[start_date, end_date],
+            status=status,
+            camera=camera
+        ).order_by('-created_at')
+        if status == -1:
+            archived_images = ArchivedImage.objects.filter(
+                created_at__range=[start_date, end_date],
+                camera=camera,
+            ).order_by('-created_at')
+        if camera == -1:
+            archived_images = ArchivedImage.objects.filter(
+                created_at__range=[start_date, end_date],
+                status=status
+            ).order_by('-created_at')
+    
+    page = request.GET.get('page', 1)
+    paginator = Paginator(archived_images, 10)
+
+    try:
+        form = paginator.page(page)
+    except PageNotAnInteger:
+        form = paginator.page(1)
+    except EmptyPage:
+        form = paginator.page(paginator.num_pages)
+
+    query_set = request.META.get('QUERY_STRING', '')
+    if '&page' in query_set:
+        query_set = query_set.split('&page')[0]
+
+    return render(request, 'dashboard/archived_images.html', {
+        'start_date': start_date,
+        'end_date': end_date,
+        'camera': camera,
+        'status': status,
+        'form':form,
+        'query_set': query_set,
+        'cameras': cameras,
+        'detections': detections
     })
 
 @login_required(login_url='/login/')
