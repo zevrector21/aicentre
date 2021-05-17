@@ -16,9 +16,9 @@
       <div class="d-flex">
         <a href="/admin/auth/user" target="blank">Users</a> / 
         <a href="/admin/health/camera" target="blank">Cameras</a> / 
+        <a href="/admin/health/archivedimage" target="blank">Archived Images</a> / 
         <a href="/admin/health/detection" target="blank">Detections</a> / 
         <a href="/admin/health/phonenumber" target="blank">Phone Numbers</a> / 
-        <a href="/admin/health/archivedimage" target="blank">Archived Images</a> / 
         <a href="/logout" style="margin-right: 0">Log Out</a>
       </div>
     </header>
@@ -35,7 +35,7 @@
               <img src="{% static 'images/empty.jpg' %}"/>
             {% endif %}
             <div class="cam-info">
-              <h3><a href="/admin/health/camera/{{ camera.id }}/change">{{ camera.cid }}</a></h3>
+              <h3><a href="/admin/health/camera/{{ camera.id }}/change" target="blank">{{ camera.cid }}</a></h3>
               <p>{{ camera.room }}</p>
               <p>{{ camera.updated_at }}</p>
             </div>
