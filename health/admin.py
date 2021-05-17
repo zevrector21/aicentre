@@ -15,7 +15,10 @@ class CameraAdmin(admin.ModelAdmin):
     def image(self, obj):
         return format_html(f'<a href="/media/LabelImages/{ obj.labled_image }" target="blank"><img src="/media/LabelImages/{ obj.labled_image }" width="100" /></a>')
 
-    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'updated_at', 'image']
+    def latest_updated_at(self, obj):
+    	return obj.updated_at.strftime('%b %d, %Y, %H:%M:%S')
+
+    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'latest_updated_at', 'image']
     search_fields = ['cid', 'title', 'room']
 
 admin.site.register(Camera, CameraAdmin)
@@ -24,7 +27,10 @@ class ArchivedImageAdmin(admin.ModelAdmin):
     def image(self, obj):
         return format_html(f'<a href="/media/LabelImages/{ obj.name }" target="blank"><img src="/media/LabelImages/{ obj.name }" width="100" /></a>')
 
-    list_display = ['camera', 'status', 'created_at', 'image']
+    def latest_updated_at(self, obj):
+    	return obj.updated_at.strftime('%b %d, %Y, %H:%M:%S')
+
+    list_display = ['camera', 'status', 'latest_updated_at', 'image']
     list_filter = ['status']
     search_fields = ['camera', 'status']
 
@@ -32,13 +38,13 @@ class ArchivedImageAdmin(admin.ModelAdmin):
 admin.site.register(ArchivedImage, ArchivedImageAdmin)
 
 class DetectionAdmin(admin.ModelAdmin):
-    list_display = ['code', 'description', 'status']
+    list_display = ['code', 'description', 'enable']
     search_fields = ['code', 'description']
     
 admin.site.register(Detection, DetectionAdmin)
 
 class PhoneNumberAdmin(admin.ModelAdmin):
-    list_display = ['name', 'number', 'description']
+    list_display = ['name', 'number', 'description', 'schedule', 'enable']
     search_fields = ['name', 'number']
     
 admin.site.register(PhoneNumber, PhoneNumberAdmin)
