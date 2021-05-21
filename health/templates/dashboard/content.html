@@ -1,5 +1,7 @@
 {% load static %}
 {% load widget_tweaks %}
+{% load extra_tags %}
+
 {% for camera in cameras %}
   <div class="camera">
     {% if camera.labled_image %}
@@ -10,7 +12,7 @@
     <div class="cam-info">
       <h3><a href="/admin/health/camera/{{ camera.id }}/change">{{ camera.cid }}</a></h3>
       <p>{{ camera.room }}</p>
-      <p>{{ camera.updated_at }}</p>
+      <p>{{ camera.updated_at | custom_format }}</p>
     </div>
   </div>
 {% endfor %}
