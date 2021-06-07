@@ -54,6 +54,5 @@ class Resident(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     status = models.BooleanField(blank=True, default=True)
 
-
     def __str__(self):
         return self.name

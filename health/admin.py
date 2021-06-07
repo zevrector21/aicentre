@@ -30,7 +30,7 @@ class ArchivedImageAdmin(admin.ModelAdmin):
     def latest_updated_at(self, obj):
     	return obj.updated_at.strftime('%b %d, %Y, %H:%M:%S')
 
-    list_display = ['camera', 'status', 'latest_updated_at', 'image']
+    list_display = ['name', 'camera', 'status', 'latest_updated_at', 'image']
     list_filter = ['status']
     search_fields = ['camera', 'status']
 

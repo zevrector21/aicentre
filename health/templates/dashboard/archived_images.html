@@ -21,6 +21,7 @@
         <a href="/archived_images" target="blank">Archived Images</a> / 
         <a href="/admin/health/detection" target="blank">Detections</a> / 
         <a href="/admin/health/phonenumber" target="blank">Phone Numbers</a> / 
+        <a href="/admin/health/resident" target="blank">Residents</a> / 
         <a href="/logout" style="margin-right: 0">Log Out</a>
       </div>
     </header>
@@ -76,6 +77,7 @@
         <table id="data" class="table table-striped">
           <thead>
             <tr class="thead-dark">
+              <th>Name</th>
               <th>Camera</th>
               <th>Status</th>
               <th>Latest Updated At</th>
@@ -84,7 +86,8 @@
           </thead>
           {% for x in form %}
             <tr>
-              <td><a href="/admin/health/archivedimage/{{x.id}}/change">{{ x.camera }}</a></td>
+              <td><a href="/admin/health/archivedimage/{{x.id}}/change">{{ x.name }}</a></td>
+              <td>{{ x.camera }}</td>
               <td>{{ x.status }}</td>
               <td>{{ x.updated_at | custom_format }}</td>
               <td><a href="/media/LabelImages/{ x.image }" target="blank"><img src="/media/LabelImages/{ x.image }" width="100" /></a></td>
