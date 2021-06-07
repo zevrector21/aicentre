@@ -6,7 +6,6 @@ class Camera(models.Model):
     cid = models.CharField(max_length=100, blank=False, unique=True)
     title = models.CharField(max_length=100, blank=False)
     room = models.CharField(max_length=100, blank=False)
-    resident = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=255, blank=True)
     medical_condition = models.CharField(max_length=255, blank=True)
     labled_image = models.CharField(max_length=255, blank=True)
@@ -43,3 +42,18 @@ class PhoneNumber(models.Model):
     
     def __str__(self):
         return self.number
+
+class Resident(models.Model):
+    camera = models.ForeignKey(Camera, on_delete=models.PROTECT, blank=False)
+    name = models.CharField(max_length=100, blank=False)
+    description = models.CharField(max_length=255, blank=True)
+    face_picture = models.ImageField(upload_to='user_profile')
+    body_picture = models.ImageField(upload_to='user_profile')
+    side_picture = models.ImageField(upload_to='user_profile')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.BooleanField(blank=True, default=True)
+
+
+    def __str__(self):
+        return self.name

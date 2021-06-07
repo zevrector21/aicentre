@@ -18,7 +18,7 @@ class CameraAdmin(admin.ModelAdmin):
     def latest_updated_at(self, obj):
     	return obj.updated_at.strftime('%b %d, %Y, %H:%M:%S')
 
-    list_display = ['cid', 'title', 'room', 'resident', 'description', 'medical_condition', 'latest_updated_at', 'image']
+    list_display = ['cid', 'title', 'room', 'description', 'medical_condition', 'latest_updated_at', 'image']
     search_fields = ['cid', 'title', 'room']
 
 admin.site.register(Camera, CameraAdmin)
@@ -48,3 +48,9 @@ class PhoneNumberAdmin(admin.ModelAdmin):
     search_fields = ['name', 'number']
     
 admin.site.register(PhoneNumber, PhoneNumberAdmin)
+
+class ResidentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'camera', 'face_picture', 'body_picture', 'side_picture', 'status']
+    search_fields = ['name', 'number']
+    
+admin.site.register(Resident, ResidentAdmin)
