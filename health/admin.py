@@ -9,7 +9,7 @@ from django.utils.html import format_html
 
 #Change header 
 
-admin.site.site_header = "AI Management Dashboard"
+admin.site.site_header = " "
 
 class CameraAdmin(admin.ModelAdmin):
     def image(self, obj):

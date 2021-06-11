@@ -132,7 +132,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = 'C:\\Users\\Administrator\\Desktop\\Charter_Senior_Care\\models\\research\\object_detection'
+# MEDIA_ROOT = 'C:\\Users\\Administrator\\Desktop\\Charter_Senior_Care\\models\\research\\object_detection'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

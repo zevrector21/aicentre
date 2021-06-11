@@ -14,7 +14,9 @@
   </head>
   <body>
     <header class="header">
-      <h1 id="title" class="text-center"><a href="/">AI Management Dashboard</a></h1>
+      <h1 id="title" class="text-center">
+        <a href="/"><img src="/media/LPSM_Logos_LPSM_HOR_4C_Tag.svg" alt="logo" class="logo-img" /></a>
+      </h1>
       <div class="d-flex">
         <a href="/admin/auth/user" target="blank">Users</a> / 
         <a href="/admin/health/camera" target="blank">Cameras</a> / 
@@ -90,7 +92,7 @@
               <td>{{ x.camera }}</td>
               <td>{{ x.status }}</td>
               <td>{{ x.updated_at | custom_format }}</td>
-              <td><a href="/media/LabelImages/{ x.image }" target="blank"><img src="/media/LabelImages/{ x.image }" width="100" /></a></td>
+              <td><a href="/media/LabelImages/{{ x.name }}" target="blank"><img src="/media/LabelImages/{{ x.name }}" width="100" /></a></td>
             </tr>
           {% endfor %}
         </table>

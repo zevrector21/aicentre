@@ -13,25 +13,15 @@ body {
     background: #fff;
 }
 
-@font-face {
-  font-family: "Chromatica";
-  src: local("Chromatica"),
-    url(../fonts/Chromatica-Regular.woff2) format("woff2");
-}
-
-* {
-  font-family: "Chromatica", sans-serif !important;
-}
-
 /* LINKS */
 
 a:link, a:visited {
-    color: #447e9b;
+    color: #00C500;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #036;
+    color: #09e809;
 }
 
 a:focus {
@@ -533,7 +523,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: #87d151;
     color: #fff;
 }
 
@@ -657,10 +647,10 @@ div.system-message p.system-message-title {
 /* BREADCRUMBS */
 
 div.breadcrumbs {
-    background: #79aec8;
+    background: #87d151;
     padding: 10px 40px;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     color: #c4dce8;
     text-align: left;
 }
@@ -732,13 +722,14 @@ a.deletelink:focus, a.deletelink:hover {
 
 .object-tools a {
     border-radius: 15px;
+    border-radius:  4px;
 }
 
 .object-tools a:link, .object-tools a:visited {
     display: block;
     float: left;
     padding: 3px 12px;
-    background: #999;
+    background: #ffb700;    
     font-weight: 400;
     font-size: 11px;
     text-transform: uppercase;
@@ -747,7 +738,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #417690;
+    background-color: #00C500;
 }
 
 .object-tools a:focus{
@@ -849,13 +840,13 @@ table#change-history tbody th {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background: #417690;
+    background: #ffffff;
     color: #ffc;
     overflow: hidden;
 }
 
 #header a:link, #header a:visited {
-    color: #fff;
+    color: #00C500;
 }
 
 #header a:focus , #header a:hover {
@@ -872,6 +863,13 @@ table#change-history tbody th {
     font-weight: 300;
     font-size: 24px;
     color: #f5dd5d;
+}
+
+#branding h1 {
+    background-image: url('../../../media/LPSM_Logos_LPSM_HOR_4C_Tag.svg');        
+    background-size: 300px;
+    width: 300px;
+    height: 67.8px;
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
@@ -895,14 +893,16 @@ table#change-history tbody th {
     padding: 0;
     margin: 0 0 0 20px;
     font-weight: 300;
-    font-size: 11px;
+    color: #00C500;
+    font-size: 16px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-align: right;
 }
 
 #user-tools a {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border: none;
+    color: #00C500;    
 }
 
 /*#user-tools a:not(:last-child) {
@@ -911,8 +911,7 @@ table#change-history tbody th {
 
 #user-tools a:focus, #user-tools a:hover {
     text-decoration: none;
-    border-bottom-color: #79aec8;
-    color: #79aec8;
+    color: #09e809;
 }
 
 /* SIDEBAR */
@@ -1008,4 +1007,14 @@ table#change-history tbody th {
 
 .field-image img {
     border: 1px solid;
+}
+
+input[type="submit"] {
+    background-color: #ffb700 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+input[type="submit"]:hover {
+    background-color: #37b44a !important;
 }

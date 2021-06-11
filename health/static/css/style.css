@@ -8,9 +8,6 @@
     url(../fonts/Chromatica-Regular.woff2) format("woff2");
 }
 
-* {
-  font-family: "Chromatica", sans-serif;
-}
 
 :root {
   --color-white: #f3f3f3;
@@ -30,12 +27,13 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.4;
   color: var(--color-white);
   margin: 0;
+  color: #333;
 }
 
 /* mobile friendly alternative to using background-attachment: fixed */
@@ -75,6 +73,10 @@ label {
   margin-bottom: 0.5rem;
 }
 
+.logo-img {
+  width: 300px;
+}
+
 input,
 button,
 select,
@@ -83,6 +85,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  color:  #333;
 }
 
 button {
@@ -109,11 +112,11 @@ button {
 }
 
 div.breadcrumbs {
-  background: #79aec8;
+  background: #87d151;
   padding: 10px 40px;
   border: none;
-  font-size: 14px;
-  color: #c4dce8;
+  font-size: 16px;
+  color: #ffffff;
   text-align: left;
   line-height: 1.3;
 }
@@ -137,12 +140,13 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
   padding: 10px;
   margin: 1%;
   text-align: center;
-  color: #333;
-  border: 1px solid #79aec8;
+  color: #142136;
+  border: 1px solid #00C500;
 }
 
 .camera:hover {
-  box-shadow: 0px 0px 8px 2px #79aec8;
+  box-shadow: 0px 0px 8px 2px #ffb700;
+  border-color: #ffb700;
 }
 
 .camera img {
@@ -152,17 +156,18 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 }
 
 .camera a {
-  color: #447e9b;
+  color: #00C500;
   text-decoration: none;
+  font-weight: 400;
 }
 
 .camera h3 {
   margin: 5px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .camera p {
-  font-size: 13px;
+  font-size: 16px;
 }
 .navigators {
   display: flex;
@@ -206,7 +211,7 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  background: #417690;
+  background: #ffffff;
   color: #ffc;
   overflow: hidden;
 
@@ -217,6 +222,7 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 
 .header h1 {
   margin-bottom: 0;
+  line-height: 0;
 }
 
 .header h1 a {
@@ -229,20 +235,19 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 }
 
 .header .d-flex a {
-  color: #ffffff;
-  font-size: 11px;
+  color: #00C500;
+  font-size: 16px;
   font-weight: 300;
-  margin: auto 4px;
+  margin: auto 7px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   text-decoration: none; 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
 }
 
 .header a:hover {
   text-decoration: none;
-  border-bottom-color: #79aec8;
-  color: #79aec8;
+  color: #09e809;
 }
 
 .description {
@@ -367,18 +372,21 @@ fieldset input, fieldset select, fieldset  textarea {
   border-radius: 4px;
 }
 
-fieldset button {
-  border: 1px solid #ccc;
+fieldset button {  
   font-size: 13px;
   padding: 4px 8px;
   margin: 0;
-  vertical-align: middle;
-  background: #fff;
-  box-shadow: 0 -15px 20px -10px rgb(0 0 0 / 15%) inset;
+  vertical-align: middle;  
   cursor: pointer;
-  color: #333;
+  color: #ffffff;
   border-radius: 4px;  
+  background: #ffb700;
+  border: none;
 }
+
+fieldset button:hover {  
+  background: #37b44a;
+} 
 
 table {
   width: 100%;
@@ -393,20 +401,20 @@ thead th {
   font-size: 11px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  text-align: left;
+  text-align: left;  
 }
 
 tbody td {
   padding: 8px 10px;
-  font-size: 14px;
-      line-height: 16px;
-    border-bottom: 1px solid #eee;
-        vertical-align: middle;
-        color: #333;
+  font-size: 13px;
+  line-height: 16px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  color: #333;
 }
 
 tbody td a {
   text-decoration: none;
+  color: #00C500;
   font-weight: bold;
-  color: #447e9b;
 }
