@@ -23,7 +23,7 @@ class Detection(models.Model):
     def __str__(self):
         return self.description
 
-class ArchivedImage(models.Model):
+class ArchivedEvent(models.Model):
     camera = models.ForeignKey(Camera, on_delete=models.PROTECT, blank=False)
     name = models.CharField(max_length=100, blank=False)
     status = models.ForeignKey(Detection, on_delete=models.PROTECT, blank=False)

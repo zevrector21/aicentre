@@ -61,7 +61,7 @@ def detected_images(request):
 
 @login_required(login_url='/login/')
 @csrf_exempt
-def archived_images(request):
+def archived_events(request):
     today = str(datetime.date.today())
     start_date = request.GET.get('start_date', '1983-01-01')
     end_date = request.GET.get('end_date', '2100-01-01')
@@ -71,22 +71,22 @@ def archived_images(request):
     detections = Detection.objects.all()
 
     if camera == -1 and status == -1:
-        archived_images = ArchivedImage.objects.filter(
+        archived_images = ArchivedEvent.objects.filter(
             created_at__range=[start_date, end_date],
         ).order_by('-created_at')
     else:
-        archived_images = ArchivedImage.objects.filter(
+        archived_images = ArchivedEvent.objects.filter(
             created_at__range=[start_date, end_date],
             status=status,
             camera=camera
         ).order_by('-created_at')
         if status == -1:
-            archived_images = ArchivedImage.objects.filter(
+            archived_images = ArchivedEvent.objects.filter(
                 created_at__range=[start_date, end_date],
                 camera=camera,
             ).order_by('-created_at')
         if camera == -1:
-            archived_images = ArchivedImage.objects.filter(
+            archived_images = ArchivedEvent.objects.filter(
                 created_at__range=[start_date, end_date],
                 status=status
             ).order_by('-created_at')

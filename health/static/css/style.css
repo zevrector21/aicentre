@@ -418,3 +418,30 @@ tbody td a {
   color: #00C500;
   font-weight: bold;
 }
+
+.pagination {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto;
+  padding: 0;
+}
+
+.pagination li {
+  margin:  10px;
+}
+
+.pagination li a, .pagination li {
+  text-decoration: none;
+  font-size: 13px;
+  color: #333;
+}
+
+.pagination li a:hover {
+  color: #87d151;
+}
+
+.pagination li.active {
+  color: #ffb700;
+}

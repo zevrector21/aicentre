@@ -23,9 +23,9 @@ class CameraAdmin(admin.ModelAdmin):
 
 admin.site.register(Camera, CameraAdmin)
 
-class ArchivedImageAdmin(admin.ModelAdmin):
+class ArchivedEventAdmin(admin.ModelAdmin):
     def image(self, obj):
-        return format_html(f'<a href="/media/LabelImages/{ obj.name }" target="blank"><img src="/media/LabelImages/{ obj.name }" width="100" /></a>')
+        return format_html(f'<a href="/media/ArchiveEvents/{ obj.name }" target="blank"><img src="/media/ArchiveEvents/{ obj.name }" width="100" /></a>')
 
     def latest_updated_at(self, obj):
     	return obj.updated_at.strftime('%b %d, %Y, %H:%M:%S')
@@ -35,7 +35,7 @@ class ArchivedImageAdmin(admin.ModelAdmin):
     search_fields = ['camera', 'status']
 
 
-admin.site.register(ArchivedImage, ArchivedImageAdmin)
+admin.site.register(ArchivedEvent, ArchivedEventAdmin)
 
 class DetectionAdmin(admin.ModelAdmin):
     list_display = ['code', 'description', 'enable']
