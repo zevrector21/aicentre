@@ -122,7 +122,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -132,8 +131,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 
-# MEDIA_ROOT = 'C:\\Users\\Administrator\\Desktop\\Charter_Senior_Care\\models\\research\\object_detection'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'C:\\Users\\Administrator\\Desktop\\Charter_Senior_Care\\models\\research\\object_detection'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 STATICFILES_DIRS = [

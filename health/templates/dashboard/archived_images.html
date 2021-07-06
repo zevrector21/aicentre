@@ -103,14 +103,14 @@
             {% else %}
               <li class="disabled"><span>&laquo;</span></li>
             {% endif %}
-            {% for i in form.paginator.page_range %}
+            {% for i in page_range %}
               {% if form.number == i %}
                 <li class="active"><span>{{ i }}</span></li>
               {% else %}
                 <li><a href="?{{query_set}}&page={{ i }}">{{ i }}</a></li>
               {% endif %}
             {% endfor %}
-            {% if form.has_next %}
+            {% if form.has_next and next_page_number < 20 %}
               <li><a href="?{{query_set}}&page={{ form.next_page_number }}">&raquo;</a></li>
             {% else %}
               <li class="disabled"><span>&raquo;</span></li>

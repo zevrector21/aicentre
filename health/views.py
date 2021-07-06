@@ -62,6 +62,7 @@ def detected_images(request):
 @login_required(login_url='/login/')
 @csrf_exempt
 def archived_events(request):
+    # ArchivedEvent.objects.all().delete()
     today = str(datetime.date.today())
     start_date = request.GET.get('start_date', '1983-01-01')
     end_date = request.GET.get('end_date', '2100-01-01')
@@ -92,7 +93,7 @@ def archived_events(request):
             ).order_by('-created_at')
     
     page = request.GET.get('page', 1)
-    paginator = Paginator(archived_images, 10)
+    paginator = Paginator(archived_images, 200)
 
     try:
         form = paginator.page(page)
@@ -100,6 +101,11 @@ def archived_events(request):
         form = paginator.page(1)
     except EmptyPage:
         form = paginator.page(paginator.num_pages)
+
+    num_pages = form.paginator.num_pages
+    page_range = form.paginator.page_range
+    if num_pages > 21:
+        page_range = range(0, 21)
 
     query_set = request.META.get('QUERY_STRING', '')
     if '&page' in query_set:
@@ -111,6 +117,7 @@ def archived_events(request):
         'camera': camera,
         'status': status,
         'form':form,
+        'page_range': page_range,
         'query_set': query_set,
         'cameras': cameras,
         'detections': detections
