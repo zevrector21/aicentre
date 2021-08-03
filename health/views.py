@@ -13,36 +13,23 @@ import datetime
 # Media Root
 import os
 from django.conf import settings
-#root to where the images will be stored
-mediaFile = settings.MEDIA_ROOT #os.path.join(settings.MEDIA_ROOT,'User_Profile')
-#login required 
 from django.contrib.auth.decorators import login_required
-# packages
 from . custom import deleteData
 import time
 from twilio.rest import Client
 import yaml
-#twilio account passsword and  key 
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import pdb
 
+mediaFile = settings.MEDIA_ROOT #os.path.join(settings.MEDIA_ROOT,'User_Profile')
 config = yaml.load(open(os.path.join(os.getcwd(),'config','con_file.yml')))
 account_sid = config['twilio']['account_sid']
 auth_token= config['twilio']['auth_token']
 client = Client(account_sid, auth_token)
 
-
-cameras = []
-for idx in range(0, 20):
-    cameras.append({
-        'cid': f'cid - {idx}',
-        'room': f'room - {idx}'
-    })
-
-# Create your views here.
 @login_required(login_url='/login/')
 @csrf_exempt
 def home(request):
@@ -125,13 +112,18 @@ def archived_events(request):
 
 @login_required(login_url='/login/')
 @csrf_exempt
+def accept_response(request):
+    pass
+
+@login_required(login_url='/login/')
+@csrf_exempt
 def fetch_images(request):
     cameras = Camera.objects.all()
     return render(request, 'dashboard/content.html', 
         {'cameras': cameras}
     )
 
-# view to log_out 
+
 def logout_request(request):
     logout(request)
     if 'next_url' in request.GET:
@@ -140,7 +132,6 @@ def logout_request(request):
     else:
         messages.info(request,"Logged out successfully")
         return redirect('login')
-
 
 def login_request(request):
     if request.user.is_authenticated:

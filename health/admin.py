@@ -34,7 +34,6 @@ class ArchivedEventAdmin(admin.ModelAdmin):
     list_filter = ['status']
     search_fields = ['camera', 'status']
 
-
 admin.site.register(ArchivedEvent, ArchivedEventAdmin)
 
 class DetectionAdmin(admin.ModelAdmin):
@@ -54,3 +53,13 @@ class ResidentAdmin(admin.ModelAdmin):
     search_fields = ['name', 'number']
     
 admin.site.register(Resident, ResidentAdmin)
+
+class ReplyTypeAdmin(admin.ModelAdmin):
+    list_display = ['number', 'description']
+    
+admin.site.register(ReplyType, ReplyTypeAdmin)
+
+class NotificationRuleAdmin(admin.ModelAdmin):
+    list_display = ['phone_number', 'camera', 'reply_type']
+    
+admin.site.register(NotificationRule, NotificationRuleAdmin)

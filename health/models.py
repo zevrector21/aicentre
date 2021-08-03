@@ -56,3 +56,15 @@ class Resident(models.Model):
 
     def __str__(self):
         return self.name
+
+class ReplyType(models.Model):
+    number = models.CharField(max_length=100, blank=False)
+    description = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.number
+
+class NotificationRule(models.Model):
+    phone_number = models.ForeignKey(PhoneNumber, on_delete=models.PROTECT, blank=False)
+    camera = models.ForeignKey(Camera, on_delete=models.PROTECT, blank=False)
+    reply_type = models.ForeignKey(ReplyType, on_delete=models.PROTECT, blank=False)
