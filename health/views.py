@@ -24,6 +24,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import pdb
 
+from twilio.twiml.messaging_response import MessagingResponse
+
+
 mediaFile = settings.MEDIA_ROOT #os.path.join(settings.MEDIA_ROOT,'User_Profile')
 config = yaml.load(open(os.path.join(os.getcwd(),'config','con_file.yml')))
 account_sid = config['twilio']['account_sid']
@@ -92,7 +95,7 @@ def archived_events(request):
     num_pages = form.paginator.num_pages
     page_range = form.paginator.page_range
     if num_pages > 21:
-        page_range = range(0, 21)
+        page_range = range(1, 21)
 
     query_set = request.META.get('QUERY_STRING', '')
     if '&page' in query_set:
@@ -110,10 +113,27 @@ def archived_events(request):
         'detections': detections
     })
 
-@login_required(login_url='/login/')
 @csrf_exempt
 def accept_response(request):
-    pass
+    # Start our TwiML response
+    # resp = MessagingResponse()
+    # if body == 'hello':
+    #     resp.message("Hi!")
+    # else:
+    #     resp.message("Goodbye")
+    # return HttpResponse(str(resp))
+    try:
+        reply_number = request.POST.get('Body', None)
+        from_phone = request.POST.get('From', None).replace('+', '')
+        reply_type = ReplyType.objects.get(number=reply_number)
+        notification = NotificationRule.objects.filter(phone_number__number=from_phone).order_by('created_at').first()
+        notification.reply_type = reply_type
+        notification.save()
+    except:
+        print('something went wrong in accept_response')
+        pass
+    return HttpResponse()
+
 
 @login_required(login_url='/login/')
 @csrf_exempt
@@ -122,7 +142,6 @@ def fetch_images(request):
     return render(request, 'dashboard/content.html', 
         {'cameras': cameras}
     )
-
 
 def logout_request(request):
     logout(request)

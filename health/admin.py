@@ -60,6 +60,6 @@ class ReplyTypeAdmin(admin.ModelAdmin):
 admin.site.register(ReplyType, ReplyTypeAdmin)
 
 class NotificationRuleAdmin(admin.ModelAdmin):
-    list_display = ['phone_number', 'camera', 'reply_type']
+    list_display = ['phone_number', 'camera', 'reply_type', 'created_at', 'updated_at']
     
 admin.site.register(NotificationRule, NotificationRuleAdmin)

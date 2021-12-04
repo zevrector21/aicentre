@@ -67,4 +67,6 @@ class ReplyType(models.Model):
 class NotificationRule(models.Model):
     phone_number = models.ForeignKey(PhoneNumber, on_delete=models.PROTECT, blank=False)
     camera = models.ForeignKey(Camera, on_delete=models.PROTECT, blank=False)
-    reply_type = models.ForeignKey(ReplyType, on_delete=models.PROTECT, blank=False)
+    reply_type = models.ForeignKey(ReplyType, on_delete=models.PROTECT, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
